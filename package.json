@@ -1,0 +1,10 @@
+{
+  "name": "koa2-vue-template",
+  "version": "1.0.0",
+  "description": "a template for koa2 and vue with webpack",
+  "author": "NickZhang<thesadboy@qq.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "vue-cli": "^2.9.6"
+  }
+}
