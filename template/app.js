@@ -16,6 +16,14 @@ const port = process.env.PORT || config.port;
 // error handler
 onerror(app);
 
+//处理vue-router history模式，需要放在其他中间件之前
+if (require('./config/routerMode') === 'history') {
+  app.use(history({
+    htmlAcceptHeaders: ['text/html'],
+    index: '/'
+  }));
+}
+
 // middlewares
 app.use(bodyparser())
   .use(json())
@@ -23,6 +31,7 @@ app.use(bodyparser())
   .use(router.routes())
   .use(router.allowedMethods());
 
+//处理开发过程中的vue代码热更新
 if (process.env.NODE_ENV === 'development') {
   const webpack = require('webpack');
   const webpackMiddleware = require('koa-webpack-middleware');
@@ -48,14 +57,6 @@ app.use(async (ctx, next) => {
 });
 
 routes(router);
-
-//处理vue-router history模式
-if (require('./config/routerMode') === 'history') {
-  app.use(history({
-    htmlAcceptHeaders: ['text/html'],
-    index: '/'
-  }));
-}
 
 app.on('error', function (err, ctx) {
   console.log(err);
