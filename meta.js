@@ -186,6 +186,7 @@ module.exports = {
     'test/unit/setup.js': 'unit && runner === \'jest\'',
     'test/e2e/**/*': 'e2e',
     'src/client/router/**/*': 'router',
+    'config/routerMode.js': 'router'
   },
   complete: function (data, {chalk}) {
     const green = chalk.green;

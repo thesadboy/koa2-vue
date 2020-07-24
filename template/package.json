@@ -32,8 +32,8 @@
     "koa-onerror": "^3.1.0",
     "koa-router": "^7.2.1",
     "koa-static": "^3.0.0",
-    "koa2-history-api-fallback": "^0.1.0",
     "vue": "^2.5.2"{{#router}},
+    "koa2-history-api-fallback": "^0.1.0",
     "vue-router": "^3.0.1"{{/router}}
   },
   "devDependencies": {

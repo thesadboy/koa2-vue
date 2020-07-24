@@ -9,13 +9,16 @@ const logger = require('koa-logger');
 const debug = require('debug')('koa2:server');
 const config = require('./config/server');
 const routes = require('./src/server/routes');
+{{#router}}
 const history = require('koa2-history-api-fallback');
+{{/router}}
 
 const port = process.env.PORT || config.port;
 
 // error handler
 onerror(app);
 
+{{#router}}
 //处理vue-router history模式，需要放在其他中间件之前
 if (require('./config/routerMode') === 'history') {
   app.use(history({
@@ -23,6 +26,7 @@ if (require('./config/routerMode') === 'history') {
     index: '/'
   }));
 }
+{{/router}}
 
 // middlewares
 app.use(bodyparser())

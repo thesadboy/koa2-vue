@@ -32,7 +32,7 @@ npm run e2e
 npm test
 {{/if_or}}
 ```
-{{router}}
+{{#router}}
 ## Notice
 
 If you want to change the vue-router mode, please edit the `config/routerMode.js` file
