@@ -79,12 +79,12 @@ module.exports = {
       message: 'vue-router mode',
       choices: [
         {
-          name: 'hash mode',
+          name: 'Hash mode',
           value: 'hash',
           short: 'hash'
         },
         {
-          name: 'history mode',
+          name: 'History mode',
           value: 'history',
           short: 'history'
         }
