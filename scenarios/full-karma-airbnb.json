@@ -1,10 +1,12 @@
-{ 
+{
   "noEscape": true,
   "name": "test",
   "description": "A Vue.js project",
   "author": "CircleCI",
   "build": "standalone",
   "router": false,
+  "routerMode": "hash",
+  "sass": true,
   "lint": true,
   "lintConfig": "airbnb",
   "unit": true,

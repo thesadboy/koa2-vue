@@ -90,6 +90,11 @@ module.exports = {
         }
       ],
     },
+    sass: {
+      when: 'isNotTest',
+      type: 'confirm',
+      message: 'Use sass/scss?'
+    },
     lint: {
       when: 'isNotTest',
       type: 'confirm',
