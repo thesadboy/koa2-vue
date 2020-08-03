@@ -16,7 +16,7 @@ const PORT = process.env.PORT && Number(process.env.PORT);
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   entry: {
-    app: ['./src/client/main.js', 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000']
+    app: ['./src/client/main.js']
   },
   mode:'development',
   module: {

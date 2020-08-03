@@ -36,22 +36,15 @@ app.use(bodyparser())
   .use(router.allowedMethods());
 
 //处理开发过程中的vue代码热更新
-if (process.env.NODE_ENV === 'development') {
-  (async function initKoaWebpackMiddleware () {
-    const webpack = require('webpack');
-    const KoaWebpack = require('koa-webpack');
-    const devConfig = await require('./build/webpack.dev.conf');
-    const compiler = webpack(devConfig);
-    app.use(await KoaWebpack({
-      compiler,
-      hotClient: {
-        autoConfigure: false
-      }
-    }));
-  })();
-} else {
-  app.use(require('koa-static')(__dirname + '/src/server/public'));
-}
+  if (process.env.NODE_ENV === 'development') {
+    (async function initKoaWebpackMiddleware () {
+      const KoaWebpack = require('koa-webpack');
+      const config = await require('./build/webpack.dev.conf');
+      app.use(await KoaWebpack({config}));
+    })();
+  } else {
+    app.use(require('koa-static')(__dirname + '/src/server/public'));
+  }
 
 // logger
 app.use(async (ctx, next) => {
