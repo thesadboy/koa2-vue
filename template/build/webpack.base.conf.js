@@ -47,12 +47,6 @@ module.exports = {
       {{#lint}}
       ...(config.dev.useEslint ? [createLintingRule()] : []),
       {{/lint}}
-      {{#sass}}
-      {
-        test: /\.(sass|scss)$/,
-        loader: ['sass-loader']
-      },
-      {{/sass}}
       {
         test: /\.vue$/,
         loader: 'vue-loader',

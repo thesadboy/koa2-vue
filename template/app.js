@@ -37,17 +37,18 @@ app.use(bodyparser())
 
 //处理开发过程中的vue代码热更新
 if (process.env.NODE_ENV === 'development') {
-  const webpack = require('webpack');
-  const webpackMiddleware = require('koa-webpack-middleware');
-  const webpackConfig = require('./build/webpack.dev.conf');
-  webpackConfig.then(devConfig => {
-    let compile = webpack(devConfig);
-    app.use(webpackMiddleware.devMiddleware(compile, {
-      publicPath: devConfig.output.publicPath,
-      stats: {colors: true}
-    }))
-      .use(webpackMiddleware.hotMiddleware(compile));
-  });
+  (async function initKoaWebpackMiddleware () {
+    const webpack = require('webpack');
+    const KoaWebpack = require('koa-webpack');
+    const devConfig = await require('./build/webpack.dev.conf');
+    const compiler = webpack(devConfig);
+    app.use(await KoaWebpack({
+      compiler,
+      hotClient: {
+        autoConfigure: false
+      }
+    }));
+  })();
 } else {
   app.use(require('koa-static')(__dirname + '/src/server/public'));
 }
