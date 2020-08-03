@@ -91,7 +91,10 @@ const webpackConfig = merge(baseWebpackConfig, {
     ])
   ],
   optimization:{
-    concatenateModules: true
+    concatenateModules: true,
+      splitChunks: {
+      chunks: 'all'
+    }
   }
 });
 
