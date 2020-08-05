@@ -48,7 +48,7 @@ exports.cssLoaders = function (options) {
         loader: MiniCssExtractPlugin.loader
       }].concat(loaders);
     } else {
-      return ['vue-style-loader'].concat(loaders);
+      return ['style-loader'].concat(loaders);
     }
   }
 
